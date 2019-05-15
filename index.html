@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TODO list</title>
+	<link href="style.css" type='text/css' rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+	<script type="text/javascript" src="angular/angular.min.js"></script>
+	<script type="text/javascript" src='https://rawgithub.com/gsklee/ngStorage/master/ngStorage.js'></script>
+	<script >
+		var app = angular.module('myApp',['ngStorage']);
+	</script>
+</head>
+<body ng-app='myApp'>
+	<div class="header">
+		<h1>TODO LIST</h1>
+		<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStFLcKdXR4rrTKdQpjopkhLeHHlEutZ1jBmJvGn9mb2-ffCo9I4w" >
+		<i class="fas fa-edit"></i>
+		<i class="fas fa-clipboard-list"></i>
+	    <i class="fas fa-eraser"></i>
+	</div>
+	<div ng-controller='project'>
+		<dir class="textArea">
+			<input type="text" name="todo" ng-model="list" placeholder="What needs to be done?" size="10">
+			<button ng-click="addTodo()">+</button>
+		</dir>
+		<div class="listArea" ng-repeat="todo in todos">
+			<table>
+			<th><input type="checkbox" class="box" name="todoDone" ng-model="checked"></th>
+			<th><label style="width:200px;display:inline-block" class="todoView" ng-if="!checked">{{todo}}</label></th>
+			<th><label style="width:200px;display:inline-block" class="todoView" ng-if="checked"><strike>{{todo}}</strike></label></th>
+			<th><button ng-click="removeTodo(todo)">x</button></th>
+			</table>
+		</div>
+	</div>
+	<script>
+		app.controller('project',function($scope, $localStorage){
+			$scope.list ;
+			$scope.todos = $localStorage.todo;
+			$scope.addTodo = function(){
+				if($scope.todos.includes($scope.list))
+					alert('Todo already exists');
+				else {
+					$scope.todos.push($scope.list);
+					$localStorage.todo = $scope.todos
+				}
+			}
+			$scope.removeTodo = function(item){
+				var i = $scope.todos.indexOf(item);
+				$scope.todos.splice(i,1);
+				$localStorage.to.splice(i,1);
+			}
+		})
+	</script>
+
+</body>
+</html>

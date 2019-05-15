@@ -1,0 +1,46 @@
+body{
+	background-color: black;
+	background-image: linear-gradient(to right, gray,silver,white);
+}
+.header{
+	font-family: 'Times New Roman' , sans-serif;
+	font-size: 30px;
+	margin: 0  auto;
+	color: hsla(0, 100%, 30%, 0.75);;
+	width: 100px;
+	height: 100px;
+}
+input{
+	border: 5px groove silver;
+	border-radius: 5px;
+	margin-top: 60px;
+	margin-left: 270px;
+	width: 200px;
+	height: 30px;
+}
+button{
+	border: 2px outset gray;
+	margin: 0 auto;
+}
+i{
+	border: 30px ridge white ;
+	background-color: tomato;
+	border-radius: 100%;
+	margin-left:400px;
+	width:35px;
+	height: 35px;
+	transition: width 10s;
+	-webkit-transition: width 10s;
+}
+img{
+	border: 2px hidden white;
+	border-radius: 100%;
+	opacity: 0.75;
+	margin-left: 350px;
+}
+
+.box {
+	margin-top: 0px;
+	width: 30px;
+}
+
